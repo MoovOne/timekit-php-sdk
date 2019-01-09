@@ -73,3 +73,15 @@ $this->httpClient->deleteResource($resourceId);
 ```php
 $resource = $this->httpClient->getResource($resourceId);
 ```
+
+## Create a booking
+*documentation in progress*
+
+## Delete a booking
+*documentation in progress*
+
+## Update a booking state
+*documentation in progress*
+
+## Get availabilities
+*documentation in progress*
