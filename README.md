@@ -4,10 +4,10 @@
 
 This library is a basic PHP SDK for the timekit.io API.
 
-This SDK doesn't fully cover the timekit.io API endpoints. Only the following endpoints are cover:
+This SDK doesn't fully cover the timekit.io API endpoints. Only the following endpoints are covered:
 
 |Covered end-point              |Timekit.io documentation                                     |
-|:-------------------------------|:------------------------------------------------------------ |
+|:------------------------------|:------------------------------------------------------------|
 |`POST /resources`              |https://developers.timekit.io/reference#resources            |
 |`PUT /resources/{id}`          |https://developers.timekit.io/reference#resources-id         |
 |`DELETE /resources/{id}`       |https://developers.timekit.io/reference#delete-resource      |
