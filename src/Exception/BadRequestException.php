@@ -1,6 +1,6 @@
 <?php
 
-namespace Infra\IO\Calendar\TimekitPhpSdk\Exception;
+namespace MoovOne\TimekitPhpSdk\Exception;
 
 class BadRequestException extends \Exception
 {

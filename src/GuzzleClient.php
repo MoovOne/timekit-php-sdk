@@ -4,9 +4,8 @@ namespace MoovOne\TimekitPhpSdk;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
-use Infra\IO\Calendar\TimekitPhpSdk\Exception\BadRequestException;
-use Infra\IO\Calendar\TimekitPhpSdk\Model\Booking;
-use Symfony\Component\HttpFoundation\Response;
+use MoovOne\TimekitPhpSdk\Exception\BadRequestException;
+use MoovOne\TimekitPhpSdk\Model\Booking;
 
 class GuzzleClient
 {
@@ -194,7 +193,7 @@ class GuzzleClient
     {
         try {
             if (false === in_array($state, Booking::getAvailableStates())) {
-                throw new BadRequestException('State not allowed.', Response::HTTP_UNPROCESSABLE_ENTITY);
+                throw new BadRequestException('State not allowed.', 422);
             }
 
             $response = $this->httpClient->put(sprintf('bookings/%s/%s', $bookingId, $state), [

@@ -1,6 +1,6 @@
 <?php
 
-namespace Infra\IO\Calendar\TimekitPhpSdk\Model;
+namespace MoovOne\TimekitPhpSdk\Model;
 
 class Customer implements \JsonSerializable
 {
