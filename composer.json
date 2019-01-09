@@ -1,5 +1,5 @@
 {
-  "name": "MoovOne/timekit-php-sdk",
+  "name": "moovone/timekit-php-sdk",
   "description": "A basic PHP SDK for timekit.io API",
   "type": "library",
   "keywords": ["moovone", "php", "sdk", "timekit", "api"],
