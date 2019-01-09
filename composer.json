@@ -4,7 +4,7 @@
   "type": "library",
   "keywords": ["moovone", "php", "sdk", "timekit", "api"],
   "homepage": "http://github.com/MoovOne/timekit-php-sdk",
-  "license": "GNU GPLv3",
+  "license": "GPL-3.0-or-later",
   "authors": [
     {
       "name": "David Micheau",
