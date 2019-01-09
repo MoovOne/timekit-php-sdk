@@ -1,5 +1,7 @@
 # Timekit.io PHP SDK
 
+**Warning: this library is in development. First release should be ready in few days.**
+
 This library is a basic PHP SDK for the timekit.io API.
 
 This SDK doesn't fully cover the timekit.io API endpoints. Only the following endpoints are cover:
