@@ -9,7 +9,7 @@ class Booking
     public const STATE_CANCEL = 'cancel';
     public const STATE_CANCEL_BY_CUSTOMER = 'cancel_by_customer';
 
-    public static function getAvailableStates()
+    public static function getAvailableStates(): array
     {
         return [
             self::STATE_CONFIRM,

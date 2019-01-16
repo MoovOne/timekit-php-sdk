@@ -25,9 +25,9 @@ class GuzzleClient
     /**
      * GuzzleClient constructor.
      *
-     * @param $apiKey
+     * @param string $apiKey
      */
-    public function __construct($apiKey)
+    public function __construct(string $apiKey)
     {
         $this->httpClient = new Client([
             'base_uri' => 'https://api.timekit.io/v2/',
