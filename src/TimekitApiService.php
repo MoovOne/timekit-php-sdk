@@ -2,42 +2,46 @@
 
 namespace MoovOne\TimekitPhpSdk;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\RequestOptions;
+use MoovOne\TimekitPhpSdk\Interfaces\HttpClientProviderInterface;
 use MoovOne\TimekitPhpSdk\Exception\BadRequestException;
 use MoovOne\TimekitPhpSdk\Model\Booking;
 
-class GuzzleClient
+/**
+ * Class TimekitApiService
+ * @package MoovOne\TimekitPhpSdk
+ */
+class TimekitApiService
 {
-    /**
-     * @var Client
-     */
-    private $httpClient;
     /**
      * @var string
      */
-    private $apiKey;
-    /**
-     * @var array
-     */
-    private $headers;
+    const BASE_URI = 'https://api.timekit.io/v2/';
 
     /**
-     * GuzzleClient constructor.
-     *
-     * @param string $apiKey
+     * @var HttpClientProviderInterface
      */
-    public function __construct(string $apiKey)
+    private $httpClient;
+
+    /**
+     * TimekitApiService constructor.
+     * @param array $options
+     *  - $options = [
+     *          'apiKey' => string,
+     *          'httpClient' => HttpClientProviderInterface
+     *      ]
+     * @throws \Exception
+     */
+    public function __construct(array $options)
     {
-        $this->httpClient = new Client([
-            'base_uri' => 'https://api.timekit.io/v2/',
-        ]);
-        $this->apiKey = $apiKey;
-
-        $this->headers = [
-            'Content-Type' => 'application/json',
-            'Authorization' => 'Basic '.base64_encode(':'.$this->apiKey),
-        ];
+        if (empty($options['apiKey'])) {
+            throw new \Exception('Missing apiKey');
+        }
+        if (empty($options['httpClient'])) {
+            $this->httpClient = new GuzzleHttpClientProvider($options, $options['apiKey'], self::BASE_URI);
+        }
+        if ($options['httpClient'] instanceof HttpClientProviderInterface) {
+            $this->httpClient = new $options['httpClient'];
+        }
     }
 
     /**
@@ -50,14 +54,7 @@ class GuzzleClient
     public function createResource(array $payload): array
     {
         try {
-            $response = $this->httpClient->post('resources', [
-                'headers' => $this->headers,
-                RequestOptions::JSON => $payload,
-            ]);
-
-            $data = json_decode($response->getBody()->getContents(), true);
-
-            return $data;
+            return $this->httpClient->post('resources', $payload);
         } catch (\Throwable $e) {
             throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
         }
@@ -72,10 +69,7 @@ class GuzzleClient
     public function updateResource(string $resourceId, array $payload): void
     {
         try {
-            $this->httpClient->put(sprintf('resources/%s', $resourceId), [
-                'headers' => $this->headers,
-                RequestOptions::JSON => $payload,
-            ]);
+            $this->httpClient->post(sprintf('resources/%s', $resourceId), $payload);
         } catch (\Throwable $e) {
             throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
         }
@@ -89,9 +83,7 @@ class GuzzleClient
     public function deleteResource(string $resourceId): void
     {
         try {
-            $this->httpClient->delete(sprintf('resources/%s', $resourceId), [
-                'headers' => $this->headers,
-            ]);
+            $this->httpClient->delete(sprintf('resources/%s', $resourceId));
         } catch (\Throwable $e) {
             throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
         }
@@ -107,13 +99,7 @@ class GuzzleClient
     public function getResource(string $resourceId): array
     {
         try {
-            $response = $this->httpClient->get(sprintf('resources/%s?include=availability_constraints', $resourceId), [
-                'headers' => $this->headers,
-            ]);
-
-            $data = json_decode($response->getBody()->getContents(), true);
-
-            return $data;
+            return $this->httpClient->get(sprintf('resources/%s?include=availability_constraints', $resourceId));
         } catch (\Throwable $e) {
             throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
         }
@@ -129,14 +115,7 @@ class GuzzleClient
     public function getAvailabilities(array $payload): array
     {
         try {
-            $response = $this->httpClient->post('availability', [
-                'headers' => $this->headers,
-                RequestOptions::JSON => $payload,
-            ]);
-
-            $data = json_decode($response->getBody()->getContents(), true);
-
-            return $data;
+            return $this->httpClient->post('availability', $payload);
         } catch (\Throwable $e) {
             throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
         }
@@ -152,14 +131,7 @@ class GuzzleClient
     public function createBooking(array $payload): array
     {
         try {
-            $response = $this->httpClient->post('bookings', [
-                'headers' => $this->headers,
-                RequestOptions::JSON => $payload,
-            ]);
-
-            $data = json_decode($response->getBody()->getContents(), true);
-
-            return $data;
+            return $this->httpClient->post('bookings', $payload);
         } catch (\Throwable $e) {
             throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
         }
@@ -173,9 +145,7 @@ class GuzzleClient
     public function deleteBooking(string $bookingId): void
     {
         try {
-            $this->httpClient->delete(sprintf('bookings/%s', $bookingId), [
-                'headers' => $this->headers,
-            ]);
+            $this->httpClient->delete(sprintf('bookings/%s', $bookingId));
         } catch (\Throwable $e) {
             throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
         }
@@ -196,14 +166,7 @@ class GuzzleClient
                 throw new BadRequestException('State not allowed.', 422);
             }
 
-            $response = $this->httpClient->put(sprintf('bookings/%s/%s', $bookingId, $state), [
-                'headers' => $this->headers,
-                RequestOptions::JSON => [],
-            ]);
-
-            $data = json_decode($response->getBody()->getContents(), true);
-
-            return $data;
+            return $this->httpClient->put(sprintf('bookings/%s/%s', $bookingId, $state), []);
         } catch (\Throwable $e) {
             throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
         }
