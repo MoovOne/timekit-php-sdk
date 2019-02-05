@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: moovone
- * Date: 16/01/19
- * Time: 17:37
- */
 
 namespace MoovOne\TimekitPhpSdk\Model;
-
 
 use MoovOne\TimekitPhpSdk\Interfaces\HttpClientProviderInterface;
 
