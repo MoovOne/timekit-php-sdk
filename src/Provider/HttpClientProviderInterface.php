@@ -1,10 +1,10 @@
 <?php
 
-namespace MoovOne\TimekitPhpSdk\Interfaces;
+namespace MoovOne\TimekitPhpSdk\Provider;
 
 /**
  * Interface HttpClientProviderInterface
- * @package MoovOne\TimekitPhpSdk\Interfaces
+ * @package MoovOne\TimekitPhpSdk\Interface
  */
 interface HttpClientProviderInterface
 {

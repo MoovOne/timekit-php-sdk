@@ -2,7 +2,7 @@
 
 namespace MoovOne\TimekitPhpSdk\Model;
 
-use MoovOne\TimekitPhpSdk\Interfaces\HttpClientProviderInterface;
+use MoovOne\TimekitPhpSdk\Provider\HttpClientProviderInterface;
 
 /**
  * Class AbstractHttpClientProvider

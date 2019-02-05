@@ -2,7 +2,7 @@
 
 namespace MoovOne\TimekitPhpSdk;
 
-use MoovOne\TimekitPhpSdk\Interfaces\HttpClientProviderInterface;
+use MoovOne\TimekitPhpSdk\Provider\HttpClientProviderInterface;
 use MoovOne\TimekitPhpSdk\Exception\BadRequestException;
 use MoovOne\TimekitPhpSdk\Model\Booking;
 
