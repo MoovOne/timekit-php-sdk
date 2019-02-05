@@ -18,5 +18,8 @@
   },
   "autoload": {
     "psr-4": {"MoovOne\\TimekitPhpSdk\\": "src/"}
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^4.2"
   }
 }
