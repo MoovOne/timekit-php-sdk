@@ -54,7 +54,7 @@ class GuzzleClient implements ClientInterface
     public function createResource(array $payload): array
     {
         try {
-            $response = $this->httpClient->request('POST', sprintf('%s/%s', ClientInterface::BASE_URI, ClientInterface::ENDPOINT_RESOURCE), [
+            $response = $this->httpClient->request('POST', ClientInterface::ENDPOINT_RESOURCE, [
                 'headers' => $this->headers,
                 RequestOptions::JSON => $payload,
             ]);
@@ -102,7 +102,7 @@ class GuzzleClient implements ClientInterface
     public function getResource(string $resourceId): array
     {
         try {
-            $response = $this->httpClient->request('GET', sprintf('%s/%s/%s?include=availability_constraints', ClientInterface::BASE_URI, ClientInterface::ENDPOINT_RESOURCE, $resourceId), [
+            $response = $this->httpClient->request('GET', sprintf('%s/%s?include=availability_constraints', ClientInterface::ENDPOINT_RESOURCE, $resourceId), [
                 'headers' => $this->headers,
             ]);
 

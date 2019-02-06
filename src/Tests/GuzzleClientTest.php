@@ -30,7 +30,7 @@ class GuzzleClientTest extends TestCase
             ->method('request')
             ->with(
                 'POST',
-                sprintf('%s/%s', ClientInterface::BASE_URI, ClientInterface::ENDPOINT_RESOURCE),
+                sprintf('%s', ClientInterface::ENDPOINT_RESOURCE),
                 $this->anything()
             )
             ->willReturn($response);
@@ -62,7 +62,7 @@ class GuzzleClientTest extends TestCase
             ->method('request')
             ->with(
                 'GET',
-                sprintf('%s/%s/%s?include=availability_constraints', ClientInterface::BASE_URI, ClientInterface::ENDPOINT_RESOURCE, $resourceId),
+                sprintf('%s/%s?include=availability_constraints', ClientInterface::ENDPOINT_RESOURCE, $resourceId),
                 $this->anything()
             )
             ->willReturn($response);
@@ -88,7 +88,7 @@ class GuzzleClientTest extends TestCase
             ->method('request')
             ->with(
                 'GET',
-                sprintf('%s/%s/%s?include=availability_constraints', ClientInterface::BASE_URI, ClientInterface::ENDPOINT_RESOURCE, $resourceId),
+                sprintf('%s/%s?include=availability_constraints', ClientInterface::ENDPOINT_RESOURCE, $resourceId),
                 $this->anything()
             )
             ->willThrowException($exception);
