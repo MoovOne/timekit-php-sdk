@@ -75,13 +75,37 @@ $resource = $this->httpClient->getResource($resourceId);
 ```
 
 ## Create a booking
-*documentation in progress*
+```php
+$start = (new \DateTime())->modify('+1 hour');
+$booking = $this->httpClient->createBooking($remoteId, $start, (clone $start)->modify('+30 minutes'), 'My first booking');
+```
 
 ## Delete a booking
-*documentation in progress*
+```php
+$this->httpClient->deleteBooking($bookingId);
+```
 
 ## Update a booking state
-*documentation in progress*
+```php
+use MoovOne\TimekitPhpSdk\Model\Booking;
+
+$booking = $this->httpClient->updateBookingState($bookingId, Booking::STATE_CANCEL);
+```
 
 ## Get availabilities
-*documentation in progress*
+```php
+use MoovOne\TimekitPhpSdk\Model\Availability;
+
+$payload = [
+	'mode' => Availability::TYPE_ROUNDROBIN_RANDOM,
+	'length' => '60 minutes',
+	'round_to_nearest_hour' => false,
+	'from' => 'tomorrow',
+	'to' => '3 days',
+	'buffer' => '5 minutes',
+	'timeslot_increments' => '15 minutes',
+	'resources' => [$resourceId],
+];
+
+$availabilities = $this->httpClient->getAvailabilities($payload);
+```
