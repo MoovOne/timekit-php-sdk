@@ -23,7 +23,6 @@ class GuzzleClient implements ClientInterface
 
     /**
      * GuzzleClient constructor.
-     * @param HttpClientInterface $httpClient
      * @param string $apiKey
      */
     public function __construct(string $apiKey)
