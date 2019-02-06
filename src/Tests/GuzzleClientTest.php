@@ -21,6 +21,7 @@ class GuzzleClientTest extends TestCase
         $stream = $this->createMock(StreamInterface::class);
         $payload = [
             'timezone' => 'Europe/Paris',
+            'name' => 'John Doe',
         ];
 
         // configuring mocks
@@ -42,6 +43,33 @@ class GuzzleClientTest extends TestCase
         $expected = $payload;
 
         $this->assertSame($expected, $response);
+    }
+
+    public function test_create_resource_with_exception()
+    {
+        // building mocks
+        $httpClient = $this->createMock(\GuzzleHttp\ClientInterface::class);
+        $exception = new ClientException('a-fake-message', $this->createMock(RequestInterface::class));
+        $payload = [
+            'timezone' => 'Europe/Paris',
+            'name' => 'John Doe',
+        ];
+
+        // configuring mocks
+        $httpClient->expects($this->once())
+            ->method('request')
+            ->with(
+                'POST',
+                sprintf('%s', ClientInterface::ENDPOINT_RESOURCE),
+                $this->anything()
+            )
+            ->willThrowException($exception);
+
+        $sut = (new GuzzleClient('fake-api-key'))->setHttpClient($httpClient);
+
+        $this->expectException(BadRequestException::class);
+
+        $sut->createResource($payload);
     }
 
     public function test_get_resource_successfully()
