@@ -41,18 +41,18 @@ $resource = $this->httpClient->createResource($payload);
 # Models
 
 This SDK provides models for the following availability constraints:
-- allow day and time: [AllowDayAndTimeAvailabilityConstraint](src/Model/AvailabilityConstraint/DayAndTime/AllowDayAndTimeAvailabilityConstraint)
-- block day and time: [BlockDayAndTimeAvailabilityConstraint](src/Model/AvailabilityConstraint/DayAndTime/BlockDayAndTimeAvailabilityConstraint)
-- allow hours: [AllowHoursAvailabilityConstraint](src/Model/AvailabilityConstraint/Hours/AllowHoursAvailabilityConstraint)
-- block hours: [BlockHoursAvailabilityConstraint](src/Model/AvailabilityConstraint/Hours/BlockHoursAvailabilityConstraint)
-- allow day: [AllowDayAvailabilityConstraint](src/Model/AvailabilityConstraint/Day/AllowDayAvailabilityConstraint)
-- block day: [BlockDayAvailabilityConstraint](src/Model/AvailabilityConstraint/Day/BlockDayAvailabilityConstraint)
-- allow period: [AllowPeriodAvailabilityConstraint](src/Model/AvailabilityConstraint/Period/AllowPeriodAvailabilityConstraint)
-- block period: [BlockPeriodAvailabilityConstraint](src/Model/AvailabilityConstraint/Period/BlockPeriodAvailabilityConstraint)
-- allow weekdays: [AllowWeekdaysAvailabilityConstraint](src/Model/AvailabilityConstraint/Weekdays/AllowWeekdaysAvailabilityConstraint)
-- block weekdays: [BlockWeekdaysAvailabilityConstraint](src/Model/AvailabilityConstraint/Weekdays/BlockWeekdaysAvailabilityConstraint)
-- allow weekends: [AllowWeekendsAvailabilityConstraint](src/Model/AvailabilityConstraint/Weekends/AllowWeekendsAvailabilityConstraint)
-- block weekends: [BlockWeekendsAvailabilityConstraint](src/Model/AvailabilityConstraint/Weekends/BlockWeekendsAvailabilityConstraint)
+- allow day and time: [AllowDayAndTimeAvailabilityConstraint](src/Model/AvailabilityConstraint/DayAndTime/AllowDayAndTimeAvailabilityConstraint.php)
+- block day and time: [BlockDayAndTimeAvailabilityConstraint](src/Model/AvailabilityConstraint/DayAndTime/BlockDayAndTimeAvailabilityConstraint.php)
+- allow hours: [AllowHoursAvailabilityConstraint](src/Model/AvailabilityConstraint/Hours/AllowHoursAvailabilityConstraint.php)
+- block hours: [BlockHoursAvailabilityConstraint](src/Model/AvailabilityConstraint/Hours/BlockHoursAvailabilityConstraint.php)
+- allow day: [AllowDayAvailabilityConstraint](src/Model/AvailabilityConstraint/Day/AllowDayAvailabilityConstraint.php)
+- block day: [BlockDayAvailabilityConstraint](src/Model/AvailabilityConstraint/Day/BlockDayAvailabilityConstraint.php)
+- allow period: [AllowPeriodAvailabilityConstraint](src/Model/AvailabilityConstraint/Period/AllowPeriodAvailabilityConstraint.php)
+- block period: [BlockPeriodAvailabilityConstraint](src/Model/AvailabilityConstraint/Period/BlockPeriodAvailabilityConstraint.php)
+- allow weekdays: [AllowWeekdaysAvailabilityConstraint](src/Model/AvailabilityConstraint/Weekdays/AllowWeekdaysAvailabilityConstraint.php)
+- block weekdays: [BlockWeekdaysAvailabilityConstraint](src/Model/AvailabilityConstraint/Weekdays/BlockWeekdaysAvailabilityConstraint.php)
+- allow weekends: [AllowWeekendsAvailabilityConstraint](src/Model/AvailabilityConstraint/Weekends/AllowWeekendsAvailabilityConstraint.php)
+- block weekends: [BlockWeekendsAvailabilityConstraint](src/Model/AvailabilityConstraint/Weekends/BlockWeekendsAvailabilityConstraint.php)
 
 All those models provide a `convertToPayloadEntry` method which will convert them to a timekit-api payload-compliant json.
 
