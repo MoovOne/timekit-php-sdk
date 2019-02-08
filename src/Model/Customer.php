@@ -2,6 +2,10 @@
 
 namespace MoovOne\TimekitPhpSdk\Model;
 
+/**
+ * Class Customer
+ * @package MoovOne\TimekitPhpSdk\Model
+ */
 class Customer implements \JsonSerializable
 {
     /**
@@ -19,6 +23,11 @@ class Customer implements \JsonSerializable
         $this->email = $email;
     }
 
+    /**
+     * serialize the object.
+     *
+     * @return array
+     */
     public function jsonSerialize(): array
     {
         return [

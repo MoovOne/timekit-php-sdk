@@ -3,9 +3,16 @@
 namespace MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint\Day;
 
 use MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint\AvailabilityConstraintInterface;
+use MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint\DayAwareAvailabilityConstraint;
 
+/**
+ * Class AbstractDayAvailabilityConstraint
+ * @package MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint\Day
+ */
 abstract class AbstractDayAvailabilityConstraint implements AvailabilityConstraintInterface
 {
+    use DayAwareAvailabilityConstraint;
+
     /**
      * @var string
      */
@@ -22,6 +29,8 @@ abstract class AbstractDayAvailabilityConstraint implements AvailabilityConstrai
      */
     public function __construct(string $day)
     {
+        $this->validateDay($day, '$day');
+
         $this->day = $day;
     }
 

@@ -4,6 +4,10 @@ namespace MoovOne\TimekitPhpSdk;
 
 use MoovOne\TimekitPhpSdk\Exception\BadRequestException;
 
+/**
+ * Interface ClientInterface
+ * @package MoovOne\TimekitPhpSdk
+ */
 interface ClientInterface
 {
     public const BASE_URI = 'https://api.timekit.io/v2/';

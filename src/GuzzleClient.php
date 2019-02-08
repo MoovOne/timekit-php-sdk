@@ -9,6 +9,10 @@ use GuzzleHttp\RequestOptions;
 use MoovOne\TimekitPhpSdk\Exception\BadRequestException;
 use MoovOne\TimekitPhpSdk\Model\Booking;
 
+/**
+ * Class GuzzleClient
+ * @package MoovOne\TimekitPhpSdk
+ */
 class GuzzleClient implements ClientInterface
 {
     /**
@@ -173,7 +177,7 @@ class GuzzleClient implements ClientInterface
     {
         try {
             if (false === in_array($state, Booking::AVAILABLE_STATES)) {
-                throw new \InvalidArgumentException('Bad value for $state parameter. allowed values are: '.implode(', ', Booking::AVAILABLE_STATES));
+                throw new \InvalidArgumentException('Bad value for $state parameter. Allowed values are: '.implode(', ', Booking::AVAILABLE_STATES));
             }
 
             $response = $this->httpClient->put(sprintf('%s/%s/%s', ClientInterface::ENDPOINT_BOOKING, $bookingId, $state), [
