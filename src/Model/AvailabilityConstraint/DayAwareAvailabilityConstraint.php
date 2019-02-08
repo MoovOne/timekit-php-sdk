@@ -2,6 +2,8 @@
 
 namespace MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint;
 
+use MoovOne\TimekitPhpSdk\Model\Exception\InvalidAvailabilityConstraintDayException;
+
 /**
  * Trait DayAwareAvailabilityConstraint
  * @package MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint
@@ -63,12 +65,12 @@ trait DayAwareAvailabilityConstraint
      * @param string $day
      * @param string|null $propertyName
      * @return bool
-     * @throws \InvalidArgumentException
+     * @throws InvalidAvailabilityConstraintDayException
      */
     public static function validateDay(string $day, string $propertyName = null): bool
     {
         if (false === in_array($day, self::getAvailableDays())) {
-            throw new \InvalidArgumentException(sprintf('Bad value for %s parameter. Allowed values are: %s', $propertyName, implode(', ', self::getAvailableDays())));
+            throw new InvalidAvailabilityConstraintDayException(sprintf('Bad value for %s parameter. Allowed values are: %s', $propertyName, implode(', ', self::getAvailableDays())));
         }
 
         return true;
