@@ -2,6 +2,10 @@
 
 namespace MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint\DayAndTime;
 
+/**
+ * Class AllowDayAndTimeAvailabilityConstraint
+ * @package MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint\DayAndTime
+ */
 class AllowDayAndTimeAvailabilityConstraint extends AbstractDayAndTimeAvailabilityConstraint
 {
     /**
