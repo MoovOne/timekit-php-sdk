@@ -11,6 +11,10 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
+/**
+ * Class GuzzleClientTest
+ * @package MoovOne\TimekitPhpSdk\Tests
+ */
 class GuzzleClientTest extends TestCase
 {
     public function test_create_resource_successfully()

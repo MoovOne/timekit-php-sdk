@@ -5,6 +5,10 @@ namespace MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint\Period;
 use \DateTime;
 use MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint\AvailabilityConstraintInterface;
 
+/**
+ * Class AbstractPeriodAvailabilityConstraint
+ * @package MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint\Period
+ */
 abstract class AbstractPeriodAvailabilityConstraint implements AvailabilityConstraintInterface
 {
     /**

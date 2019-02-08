@@ -2,6 +2,10 @@
 
 namespace MoovOne\TimekitPhpSdk\Model;
 
+/**
+ * Class Booking
+ * @package MoovOne\TimekitPhpSdk\Model
+ */
 class Booking
 {
     public const STATE_CONFIRM = 'confirm';

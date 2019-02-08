@@ -3,9 +3,18 @@
 namespace MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint\DayAndTime;
 
 use MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint\AvailabilityConstraintInterface;
+use MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint\DayAwareAvailabilityConstraint;
+use MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint\TimeAwareAvailabilityConstraint;
 
+/**
+ * Class AbstractDayAndTimeAvailabilityConstraint
+ * @package MoovOne\TimekitPhpSdk\Model\AvailabilityConstraint\DayAndTime
+ */
 abstract class AbstractDayAndTimeAvailabilityConstraint implements AvailabilityConstraintInterface
 {
+    use DayAwareAvailabilityConstraint;
+    use TimeAwareAvailabilityConstraint;
+
     /**
      * @var string
      */
@@ -17,44 +26,26 @@ abstract class AbstractDayAndTimeAvailabilityConstraint implements AvailabilityC
     private $day;
 
     /**
-     * @var int
+     * @var string
      */
     private $start;
 
     /**
-     * @var int
+     * @var string
      */
     private $end;
-
-    public const MONDAY = 'Monday';
-    public const TUESDAY = 'Tuesday';
-    public const WEDNESDAY = 'Wednesday';
-    public const THURSDAY = 'Thursday';
-    public const FRIDAY = 'Friday';
-    public const SATURDAY = 'Saturday';
-    public const SUNDAY = 'Sunday';
-
-    public const AVAILABLE_DAYS = [
-        self::MONDAY,
-        self::TUESDAY,
-        self::WEDNESDAY,
-        self::THURSDAY,
-        self::FRIDAY,
-        self::SATURDAY,
-        self::SUNDAY,
-    ];
 
     /**
      * AbstractDayAndTimeAvailabilityConstraint constructor.
      * @param string $day
-     * @param int $start
-     * @param int $end
+     * @param string $start any H:i formatted time
+     * @param string $end any H:i formatted time
      */
-    public function __construct(string $day, int $start, int $end)
+    public function __construct(string $day, string $start, string $end)
     {
-        if (false === in_array($day, self::AVAILABLE_DAYS)) {
-            throw new \InvalidArgumentException('Bad value for $day parameter. allowed values are: '.implode(', ', self::AVAILABLE_DAYS));
-        }
+        $this->validateDay($day, '$day');
+        $this->validateTime($start, '$start');
+        $this->validateTime($end, '$end');
 
         $this->day = $day;
         $this->start = $start;
@@ -92,17 +83,17 @@ abstract class AbstractDayAndTimeAvailabilityConstraint implements AvailabilityC
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getStart(): int
+    public function getStart(): string
     {
         return $this->start;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getEnd(): int
+    public function getEnd(): string
     {
         return $this->end;
     }

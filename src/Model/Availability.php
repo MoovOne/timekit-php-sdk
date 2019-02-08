@@ -2,6 +2,10 @@
 
 namespace MoovOne\TimekitPhpSdk\Model;
 
+/**
+ * Class Availability
+ * @package MoovOne\TimekitPhpSdk\Model
+ */
 class Availability
 {
     public const TYPE_MUTUAL = 'mutual';
