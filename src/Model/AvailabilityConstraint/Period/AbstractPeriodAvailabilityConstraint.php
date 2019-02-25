@@ -49,4 +49,28 @@ abstract class AbstractPeriodAvailabilityConstraint implements AvailabilityConst
             ],
         ];
     }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getStart(): DateTime
+    {
+        return $this->start;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getEnd(): DateTime
+    {
+        return $this->end;
+    }
 }
