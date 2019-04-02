@@ -44,8 +44,8 @@ abstract class AbstractPeriodAvailabilityConstraint implements AvailabilityConst
     {
         return [
             $this->type => [
-                'start' => $this->start->format('Y-m-d H:i:s'),
-                'end' => $this->end->format('Y-m-d H:i:s'),
+                'start' => $this->start->format('c'),
+                'end' => $this->end->format('c'),
             ],
         ];
     }
