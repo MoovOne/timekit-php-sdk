@@ -15,21 +15,21 @@ abstract class AbstractHoursAvailabilityConstraint implements AvailabilityConstr
     protected $type;
 
     /**
-     * @var int
+     * @var string
      */
     private $start;
 
     /**
-     * @var int
+     * @var string
      */
     private $end;
 
     /**
      * AbstractHoursAvailabilityConstraint constructor.
-     * @param int $start
-     * @param int $end
+     * @param string $start
+     * @param string $end
      */
-    public function __construct(int $start, int $end)
+    public function __construct(string $start, string $end)
     {
         $this->validateTime($start, '$start');
         $this->validateTime($end, '$end');
@@ -60,17 +60,17 @@ abstract class AbstractHoursAvailabilityConstraint implements AvailabilityConstr
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getStart(): int
+    public function getStart(): string
     {
         return $this->start;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getEnd(): int
+    public function getEnd(): string
     {
         return $this->end;
     }
