@@ -192,4 +192,27 @@ class GuzzleClient implements ClientInterface
             throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
         }
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getProjects(string $search = ''): array
+    {
+        if($search) {
+            $search = '?search=' . $search;
+        }
+
+        try {
+            $response = $this->httpClient->get(ClientInterface::ENDPOINT_PROJECT . $search, [
+                'headers' => $this->headers,
+                //RequestOptions::JSON => $payload,
+            ]);
+
+            $data = json_decode($response->getBody()->getContents(), true);
+
+            return $data;
+        } catch (\Throwable $e) {
+            throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
+        }
+    }
 }

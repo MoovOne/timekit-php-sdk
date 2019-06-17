@@ -15,6 +15,7 @@ interface ClientInterface
     public const ENDPOINT_RESOURCE = 'resources';
     public const ENDPOINT_AVAILABILITY = 'availability';
     public const ENDPOINT_BOOKING = 'bookings';
+    public const ENDPOINT_PROJECT = 'projects';
 
     /**
      * @param array $payload
@@ -70,4 +71,11 @@ interface ClientInterface
      * @throws BadRequestException
      */
     public function updateBookingState(string $bookingId, string $state): array;
+
+    /**
+     * @param string $search
+     * @return array
+     * @throws BadRequestException
+     */
+    public function getProjects(string $search = ''): array;
 }
