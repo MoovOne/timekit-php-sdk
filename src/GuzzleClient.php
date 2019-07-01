@@ -8,6 +8,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
 use MoovOne\TimekitPhpSdk\Exception\BadRequestException;
 use MoovOne\TimekitPhpSdk\Model\Booking;
+use MoovOne\TimekitPhpSdk\Model\ActionLink;
 
 /**
  * Class GuzzleClient
@@ -19,6 +20,7 @@ class GuzzleClient implements ClientInterface
      * @var Client
      */
     private $httpClient;
+    private $apiKey;
 
     /**
      * @var array
@@ -39,6 +41,8 @@ class GuzzleClient implements ClientInterface
             'Content-Type' => 'application/json',
             'Authorization' => 'Basic '.base64_encode(':'.$apiKey),
         ];
+
+        $this->apiKey = $apiKey;
     }
 
     /**
@@ -214,5 +218,11 @@ class GuzzleClient implements ClientInterface
         } catch (\Throwable $e) {
             throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
         }
+    }
+
+
+    public function generateActionLink(string $booking_id, string $action, string $redirect_url)
+    {
+        return ActionLink::generateActionLink($this->apiKey, $booking_id, $action, $redirect_url);
     }
 }
