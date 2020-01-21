@@ -220,6 +220,21 @@ class GuzzleClient implements ClientInterface
         }
     }
 
+    public function getProjectResources(string $project_id): array
+    {
+        try {
+            $response = $this->httpClient->get(ClientInterface::ENDPOINT_PROJECT . DIRECTORY_SEPARATOR . $project_id . DIRECTORY_SEPARATOR . '/resources', [
+                'headers' => $this->headers
+            ]);
+
+            $data = json_decode($response->getBody()->getContents(), true);
+
+            return $data;
+        } catch (\Throwable $e) {
+            throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
+        }
+    }
+
 
     public function generateActionLink(string $booking_id, string $action, string $redirect_url)
     {
