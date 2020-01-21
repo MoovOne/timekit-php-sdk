@@ -223,7 +223,7 @@ class GuzzleClient implements ClientInterface
     public function getProjectResources(string $project_id): array
     {
         try {
-            $response = $this->httpClient->get(ClientInterface::ENDPOINT_PROJECT . DIRECTORY_SEPARATOR . $project_id . DIRECTORY_SEPARATOR . '/resources', [
+            $response = $this->httpClient->get(ClientInterface::ENDPOINT_PROJECT . DIRECTORY_SEPARATOR . $project_id . DIRECTORY_SEPARATOR . 'resources', [
                 'headers' => $this->headers
             ]);
 
