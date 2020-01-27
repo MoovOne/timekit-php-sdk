@@ -239,7 +239,7 @@ class GuzzleClient implements ClientInterface
     public function getProjectResources(string $project_id): array
     {
         try {
-            $response = $this->httpClient->get(sprintf('%s/%s/%s', ClientInterface::ENDPOINT_BOOKING, $project_id, 'resources'), [
+            $response = $this->httpClient->get(sprintf('%s/%s/%s', ClientInterface::ENDPOINT_PROJECT, $project_id, 'resources'), [
                 'headers' => $this->headers
             ]);
 
