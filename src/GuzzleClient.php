@@ -197,6 +197,22 @@ class GuzzleClient implements ClientInterface
         }
     }
 
+    public function getProject(string $project_id): array
+    {
+        try {
+            $response = $this->httpClient->get(sprintf('%s/%s', ClientInterface::ENDPOINT_PROJECT, $project_id), [
+                'headers' => $this->headers,
+                RequestOptions::JSON => [],
+            ]);
+
+            $data = json_decode($response->getBody()->getContents(), true);
+
+            return $data;
+        } catch (\Throwable $e) {
+            throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
+        }
+    }
+
     /**
      * @inheritdoc
      */
@@ -223,7 +239,7 @@ class GuzzleClient implements ClientInterface
     public function getProjectResources(string $project_id): array
     {
         try {
-            $response = $this->httpClient->get(ClientInterface::ENDPOINT_PROJECT . DIRECTORY_SEPARATOR . $project_id . DIRECTORY_SEPARATOR . 'resources', [
+            $response = $this->httpClient->get(sprintf('%s/%s/%s', ClientInterface::ENDPOINT_BOOKING, $project_id, 'resources'), [
                 'headers' => $this->headers
             ]);
 
