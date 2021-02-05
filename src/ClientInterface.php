@@ -56,7 +56,7 @@ interface ClientInterface
      * @return array
      * @throws BadRequestException
      */
-    public function createBooking(array $payload): array;
+    public function createBooking(array $payload, string $include = ''): array;
 
     /**
      * @param string $bookingId

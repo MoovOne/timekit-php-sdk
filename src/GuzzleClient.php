@@ -144,12 +144,13 @@ class GuzzleClient implements ClientInterface
     /**
      * @inheritdoc
      */
-    public function createBooking(array $payload): array
+    public function createBooking(array $payload, string $include = ''): array
     {
         try {
             $response = $this->httpClient->post(ClientInterface::ENDPOINT_BOOKING, [
                 'headers' => $this->headers,
                 RequestOptions::JSON => $payload,
+                'query' => ['include' => $include]
             ]);
 
             $data = json_decode($response->getBody()->getContents(), true);
