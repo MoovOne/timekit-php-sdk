@@ -253,6 +253,20 @@ class GuzzleClient implements ClientInterface
     }
 
 
+    public function updateProject(string $project_id, array $payload): void
+    {
+        try {
+            $response = $this->httpClient->put(sprintf('%s/%s', ClientInterface::ENDPOINT_PROJECT, $project_id), [
+                'headers' => $this->headers,
+                RequestOptions::JSON => $payload
+            ]);
+            $data = json_decode($response->getBody()->getContents(), true);
+        } catch (\Throwable $e) {
+            throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
+        }
+    }
+
+
     public function generateActionLink(string $booking_id, string $action, string $redirect_url)
     {
         return ActionLink::generateActionLink($this->apiKey, $booking_id, $action, $redirect_url);
