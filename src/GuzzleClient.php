@@ -31,11 +31,10 @@ class GuzzleClient implements ClientInterface
      * GuzzleClient constructor.
      * @param string $apiKey
      */
-    public function __construct(string $apiKey)
+    public function __construct(string $apiKey, array $options = [])
     {
-        $this->httpClient = new Client([
-            'base_uri' => ClientInterface::BASE_URI,
-        ]);
+		$options['base_uri'] = ClientInterface::BASE_URI;
+		$this->httpClient = new Client($options);
 
         $this->headers = [
             'Content-Type' => 'application/json',
