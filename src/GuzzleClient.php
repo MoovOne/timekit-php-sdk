@@ -201,8 +201,7 @@ class GuzzleClient implements ClientInterface
     {
         try {
             $response = $this->httpClient->get(sprintf('%s/%s', ClientInterface::ENDPOINT_PROJECT, $project_id), [
-                'headers' => $this->headers,
-                RequestOptions::JSON => [],
+                'headers' => $this->headers
             ]);
 
             $data = json_decode($response->getBody()->getContents(), true);
