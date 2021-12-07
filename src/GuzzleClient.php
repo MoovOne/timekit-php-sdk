@@ -186,7 +186,6 @@ class GuzzleClient implements ClientInterface
 
             $response = $this->httpClient->put(sprintf('%s/%s/%s', ClientInterface::ENDPOINT_BOOKING, $bookingId, $state), [
                 'headers' => $this->headers,
-                RequestOptions::JSON => [],
             ]);
 
             $data = json_decode($response->getBody()->getContents(), true);
